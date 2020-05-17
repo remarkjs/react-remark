@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "name": "react-remark",
+  "version": "0.0.0",
+  "name": "@christianmurphy/react-remark",
   "description": "Renders Markdown as React components",
   "author": "Christian Murphy <christian.murphy.42@gmail.com>",
   "license": "MIT",

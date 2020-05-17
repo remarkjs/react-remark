@@ -9,13 +9,13 @@
 _npm_
 
 ```
-npm install --save react-remark
+npm install --save @christianmurphy/react-remark
 ```
 
 _yarn_
 
 ```
-yarn add react-remark
+yarn add @christianmurphy/react-remark"
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ yarn add react-remark
 
 ```tsx
 import React from 'react';
-import { useRemark } from 'react-remark';
+import { useRemark } from '@christianmurphy/react-remark';
 
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
@@ -43,7 +43,7 @@ export default ExampleComponent;
 
 ```tsx
 import React from 'react';
-import { useRemark } from 'react-remark';
+import { useRemark } from '@christianmurphy/react-remark';
 
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
@@ -70,6 +70,7 @@ export default ExampleComponent;
 
 ```tsx
 import React, { useState } from 'react';
+import { Remark } from '@christianmurphy/react-remark';
 
 const ExampleComponent = () => (
   <Remark>{`
@@ -87,7 +88,7 @@ export default ExampleComponent;
 
 ```tsx
 import React, { useState } from 'react';
-import { Remark } from 'react-remark';
+import { Remark } from '@christianmurphy/react-remark';
 
 const ExampleComponent = () => {
   const [markdownSource, setMarkdownSource] = useState('');
@@ -125,7 +126,7 @@ The source for the story files can be found in [_/stories_](./stories).
 
 ```tsx
 import React, { Fragment } from 'react';
-import { useRemark } from 'react-remark';
+import { useRemark } from '@christianmurphy/react-remark';
 import remarkGemoji from 'remark-gemoji';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
@@ -148,7 +149,7 @@ const [reactContent, setMarkdownSource] = useRemark({
 
 ```tsx
 import React, { Fragment } from 'react';
-import { useRemark } from 'react-remark';
+import { useRemark } from '@christianmurphy/react-remark';
 import remarkGemoji from 'remark-gemoji';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
