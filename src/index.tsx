@@ -57,7 +57,7 @@ export const Remark: FunctionComponent<RemarkProps> = ({
   children,
   ...useRemarkOptions
 }: RemarkProps) => {
-  const [reactContent, setMarkdownSource] = useMarkdown(useRemarkOptions);
+  const [reactContent, setMarkdownSource] = useRemark(useRemarkOptions);
 
   useEffect(() => {
     setMarkdownSource(children);
