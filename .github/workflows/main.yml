@@ -1,8 +1,19 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [10, 12, 14]
+
+    name: '${{ matrix.platform }}: node.js ${{ matrix.node-version }}'
+
+    runs-on: ${{ matrix.platform }}
 
     steps:
       - name: Begin CI...
@@ -11,32 +22,32 @@ jobs:
       - name: Use Node 12
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: ${{ matrix.node-version }}
 
       - name: Use cached node_modules
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          key: nodeModules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             nodeModules-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
         env:
           CI: true
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
         env:
           CI: true
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: npm test --ci --coverage --maxWorkers=2
         env:
           CI: true
 
       - name: Build
-        run: yarn build
+        run: npm run build
         env:
           CI: true

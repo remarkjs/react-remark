@@ -4,11 +4,11 @@ import { useRemark } from '../src';
 
 describe('useRemark', () => {
   it('should render content', async () => {
-    const {result,waitForNextUpdate} =  renderHook(() => useRemark());
+    const { result, waitForNextUpdate } = renderHook(() => useRemark());
     act(() => {
-        result.current[1]('# header')
-    })
+      result.current[1]('# header');
+    });
     await waitForNextUpdate();
-    expect(result.current[0]).toMatchSnapshot()
+    expect(result.current[0]).toMatchSnapshot();
   });
 });
