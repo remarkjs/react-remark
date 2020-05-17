@@ -122,12 +122,11 @@ The source for the story files can be found in [_/stories_](./stories).
 |                                                                                                                                             |
 |            +----------+        +----------------+        +---------------+       +----------------+       +--------------+                  |
 |            |          |        |                |        |               |       |                |       |              |                  |
-| -markdown->+  remark  +-mdast+>+ remark plugins +-mdast->+ remark-rehype +-hast->+ rehype plugins +-hast->+ rehype-react +-react elements-> |
+| -markdown->+  remark  +-mdast->+ remark plugins +-mdast->+ remark-rehype +-hast->+ rehype plugins +-hast->+ rehype-react +-react elements-> |
 |            |          |        |                |        |               |       |                |       |              |                  |
 |            +----------+        +----------------+        +---------------+       +----------------+       +--------------+                  |
 |                                                                                                                                             |
 +---------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 ## Options
