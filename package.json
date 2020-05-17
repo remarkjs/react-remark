@@ -21,7 +21,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "gh-pages": "build-storybook && gh-pages -d storybook-static"
   },
   "peerDependencies": {
     "react": ">=16.8"
@@ -47,6 +48,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
+    "gh-pages": "^2.2.0",
     "husky": "^4.2.5",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react": "^16.13.1",
