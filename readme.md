@@ -69,3 +69,11 @@ export default ExampleComponent;
 ```
 
 [More examples of usage as component in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-component--default)
+
+## Options
+
+- `remarkParseOptions` (Object) - configure how Markdown is parsed, same as [`remark-parse` options](https://github.com/remarkjs/remark/tree/master/packages/remark-parse#options)
+- `remarkPlugins` (Array) - [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md) or [custom plugins](https://unifiedjs.com/learn/guide/create-a-plugin) to transform markdown content before it is translated to HTML (hast)
+- `remarkToRehypeOptions` (Object) - configure how Markdown (mdast) is translated into HTML (hast), same as [`remark-rehype` options](https://github.com/remarkjs/remark-rehype#api)
+- `rehypePlugins` (Array) - [rehype plugins](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) or [custom plugins](https://unifiedjs.com/learn/guide/create-a-plugin) to transform HTML (hast) before it is translated to React elements.
+- `rehypeReactOptions` (Object) - configure how HTML (hast) is translated into React elements, same as [`rehype-react` options](https://github.com/rehypejs/rehype-react#options)
