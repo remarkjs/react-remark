@@ -114,6 +114,22 @@ export default ExampleComponent;
 A set of runnable examples are provided through storybook at <https://christianmurphy.github.io/react-remark>.
 The source for the story files can be found in [_/stories_](./stories).
 
+## Architecture
+
+```
+                                                             react-remark
++---------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                             |
+|            +----------+        +----------------+        +---------------+       +----------------+       +--------------+                  |
+|            |          |        |                |        |               |       |                |       |              |                  |
+| -markdown->+  remark  +-mdast+>+ remark plugins +-mdast->+ remark-rehype +-hast->+ rehype plugins +-hast->+ rehype-react +-react elements-> |
+|            |          |        |                |        |               |       |                |       |              |                  |
+|            +----------+        +----------------+        +---------------+       +----------------+       +--------------+                  |
+|                                                                                                                                             |
++---------------------------------------------------------------------------------------------------------------------------------------------+
+
+```
+
 ## Options
 
 - `remarkParseOptions` (Object) - configure how Markdown is parsed, same as [`remark-parse` options](https://github.com/remarkjs/remark/tree/master/packages/remark-parse#options)
