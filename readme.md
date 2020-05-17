@@ -43,6 +43,8 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
+[More examples of usage as hook in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-hook--default)
+
 ## As a component
 
 ```tsx
@@ -65,3 +67,5 @@ const ExampleComponent = () => {
 
 export default ExampleComponent;
 ```
+
+[More examples of usage as component in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-component--default)
