@@ -1,6 +1,8 @@
 import React, {
   FunctionComponent,
+  Fragment,
   ReactElement,
+  createElement,
   useState,
   useEffect,
   useCallback,
@@ -26,7 +28,7 @@ export interface UseRemarkOptions {
 export const useRemark = ({
   remarkParseOptions,
   remarkToRehypeOptions,
-  rehypeReactOptions = { createElement: React.createElement },
+  rehypeReactOptions,
   remarkPlugins = [],
   rehypePlugins = [],
   onError = () => {},
@@ -39,7 +41,7 @@ export const useRemark = ({
       .use(remarkPlugins)
       .use(remarkToRehype, remarkToRehypeOptions)
       .use(rehypePlugins)
-      .use(rehypeReact, rehypeReactOptions)
+      .use(rehypeReact, { createElement, Fragment, ...rehypeReactOptions })
       .process(source)
       // @ts-ignore pending https://github.com/vfile/vfile/pull/53
       .then(vfile => setReactContent(vfile.result))

@@ -29,6 +29,23 @@ import { useRemark } from 'react-remark';
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
 
+  setMarkdownSource('# markdown header');
+
+  return reactContent;
+};
+
+export default ExampleComponent;
+```
+
+#### Using input and events to update
+
+```tsx
+import React from 'react';
+import { useRemark } from 'react-remark';
+
+const ExampleComponent = () => {
+  const [reactContent, setMarkdownSource] = useRemark();
+
   return (
     <>
       <input
@@ -45,7 +62,24 @@ export default ExampleComponent;
 
 [More examples of usage as hook in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-hook--default)
 
-## As a component
+### As a component
+
+```tsx
+import React, { useState } from 'react';
+
+const ExampleComponent = () => (
+  <Remark>{`
+# header
+
+1. ordered
+2. list
+`}</Remark>
+);
+
+export default ExampleComponent;
+```
+
+#### Using input and events to update
 
 ```tsx
 import React, { useState } from 'react';
@@ -70,6 +104,11 @@ export default ExampleComponent;
 
 [More examples of usage as component in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-component--default)
 
+## Examples
+
+A set of runnable examples are provided through storybook at <https://christianmurphy.github.io/react-remark>.
+The source for the story files can be found in [_/stories_](./stories).
+
 ## Options
 
 - `remarkParseOptions` (Object) - configure how Markdown is parsed, same as [`remark-parse` options](https://github.com/remarkjs/remark/tree/master/packages/remark-parse#options)
@@ -77,3 +116,51 @@ export default ExampleComponent;
 - `remarkToRehypeOptions` (Object) - configure how Markdown (mdast) is translated into HTML (hast), same as [`remark-rehype` options](https://github.com/remarkjs/remark-rehype#api)
 - `rehypePlugins` (Array) - [rehype plugins](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) or [custom plugins](https://unifiedjs.com/learn/guide/create-a-plugin) to transform HTML (hast) before it is translated to React elements.
 - `rehypeReactOptions` (Object) - configure how HTML (hast) is translated into React elements, same as [`rehype-react` options](https://github.com/rehypejs/rehype-react#options)
+
+### Pass options to hook
+
+```tsx
+import React, { Fragment } from 'react';
+import { useRemark } from 'react-remark';
+import remarkGemoji from 'remark-gemoji';
+import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
+
+// ...
+
+const [reactContent, setMarkdownSource] = useRemark({
+  remarkParseOptions: { commonmark: true },
+  remarkPlugins: [remarkGemoji],
+  remarkToRehypeOptions: { commonmark: true },
+  rehypePlugins: [rehypeAutoLinkHeadings],
+  rehypeReactOptions: {
+    components: {
+      p: props => <p className="custom-paragraph" {...props} />,
+    },
+  },
+});
+```
+
+### Pass options to component
+
+```tsx
+import React, { Fragment } from 'react';
+import { useRemark } from 'react-remark';
+import remarkGemoji from 'remark-gemoji';
+import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
+
+// ...
+
+<Remark
+  remarkParseOptions={{ commonmark: true }}
+  remarkPlugins={[remarkGemoji]}
+  remarkToRehypeOptions={{ commonmark: true }}
+  rehypePlugins={[rehypeAutoLinkHeadings]}
+  rehypeReactOptions={{
+    components: {
+      p: props => <p className="custom-paragraph" {...props} />,
+    },
+  }}
+>
+  {markdownSource}
+</Remark>;
+```
