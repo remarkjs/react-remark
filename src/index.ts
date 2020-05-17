@@ -1,4 +1,4 @@
-import React, {
+import {
   FunctionComponent,
   Fragment,
   ReactElement,
