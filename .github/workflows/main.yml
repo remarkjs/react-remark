@@ -1,15 +1,17 @@
 name: CI
+
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
+
 jobs:
   build:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [10, 12, 14]
+        node-version: [12, 14]
 
     name: '${{ matrix.platform }}: node.js ${{ matrix.node-version }}'
 
@@ -19,7 +21,7 @@ jobs:
       - name: Begin CI...
         uses: actions/checkout@v2
 
-      - name: Use Node 12
+      - name: Use Node
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
