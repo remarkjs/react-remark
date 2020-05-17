@@ -2,6 +2,8 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import 'katex/dist/katex.min.css';
 
 import { Remark } from '../src';
@@ -11,7 +13,7 @@ export default {
   component: Remark,
 };
 
-export const Default = () => (
+export const PlainMarkdown = () => (
   <Remark>
     {text(
       'content',
@@ -26,7 +28,7 @@ export const Default = () => (
   </Remark>
 );
 
-export const Math = () => (
+export const MarkdownWithMath = () => (
   <Remark remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
     {text(
       'content',
@@ -38,3 +40,28 @@ $$`
     )}
   </Remark>
 );
+
+export const MixedHTMLSanitized = () => (
+  <Remark
+    remarkToRehypeOptions={{ allowDangerousHTML: true }}
+    rehypePlugins={[rehypeRaw, rehypeSanitize]}
+  >
+    {text(
+      'content',
+      `# header
+
+<strong>mixed</strong>
+<em>with</em>
+<kbd>html</kbd>
+`
+    )}
+  </Remark>
+);
+
+MixedHTMLSanitized.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};

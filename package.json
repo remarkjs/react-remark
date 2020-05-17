@@ -56,6 +56,8 @@
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rehype-katex": "^3.0.0",
+    "rehype-raw": "^4.0.2",
+    "rehype-sanitize": "^3.0.1",
     "remark-math": "^2.0.1",
     "ts-loader": "^7.0.4",
     "tsdx": "^0.13.2",
