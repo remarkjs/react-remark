@@ -22,6 +22,8 @@ yarn add react-remark
 
 ### As a hook
 
+#### Render static content
+
 ```tsx
 import React from 'react';
 import { useRemark } from 'react-remark';
@@ -63,6 +65,8 @@ export default ExampleComponent;
 [More examples of usage as hook in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-hook--default)
 
 ### As a component
+
+#### Render static content
 
 ```tsx
 import React, { useState } from 'react';
