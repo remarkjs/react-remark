@@ -129,6 +129,8 @@ The source for the story files can be found in [_/stories_](./stories).
 +---------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
+relevant links: [markdown](https://commonmark.org), [remark](https://github.com/remarkjs/remark), [mdast](https://github.com/syntax-tree/mdast), [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md), [remark-rehype](https://github.com/remarkjs/remark-rehype), [hast](https://github.com/syntax-tree/hast), [rehype plugins](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md), [rehype-react](https://github.com/rehypejs/rehype-react)
+
 ## Options
 
 - `remarkParseOptions` (Object) - configure how Markdown is parsed, same as [`remark-parse` options](https://github.com/remarkjs/remark/tree/master/packages/remark-parse#options)
