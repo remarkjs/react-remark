@@ -15,7 +15,7 @@ npm install --save @christianmurphy/react-remark
 _yarn_
 
 ```
-yarn add @christianmurphy/react-remark"
+yarn add @christianmurphy/react-remark
 ```
 
 ## Usage
