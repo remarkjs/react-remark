@@ -27,7 +27,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "rehype-react": "^5.0.0",
+    "rehype-react": "^6.0.0",
     "remark-parse": "^8.0.0",
     "remark-rehype": "^7.0.0",
     "unified": "^9.0.0"

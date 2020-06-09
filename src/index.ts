@@ -11,14 +11,12 @@ import unified, { PluggableList } from 'unified';
 import remarkParse, { RemarkParseOptions } from 'remark-parse';
 import { Options as RemarkRehypeOptions } from 'mdast-util-to-hast';
 import remarkToRehype from 'remark-rehype';
-// @ts-ignore
-import rehypeReact from 'rehype-react';
+import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 
 export interface UseRemarkOptions {
   remarkParseOptions?: Partial<RemarkParseOptions>;
   remarkToRehypeOptions?: RemarkRehypeOptions;
-  // TODO: Pending
-  rehypeReactOptions?: {};
+  rehypeReactOptions?: RehypeReactOptions<typeof createElement>;
   remarkPlugins?: PluggableList;
   rehypePlugins?: PluggableList;
   onError?: (err: Error) => void;
