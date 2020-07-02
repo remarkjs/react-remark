@@ -56,7 +56,7 @@ export const MarkdownWithMath = () => {
 
 export const MixedHTMLSanitized = () => {
   const [reactContent, setMarkdownSource] = useRemark({
-    remarkToRehypeOptions: { allowDangerousHTML: true },
+    remarkToRehypeOptions: { allowDangerousHtml: true },
     rehypePlugins: [rehypeRaw, rehypeSanitize],
   });
   const markdownSource = text(

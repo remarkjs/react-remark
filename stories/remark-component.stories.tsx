@@ -43,7 +43,7 @@ $$`
 
 export const MixedHTMLSanitized = () => (
   <Remark
-    remarkToRehypeOptions={{ allowDangerousHTML: true }}
+    remarkToRehypeOptions={{ allowDangerousHtml: true }}
     rehypePlugins={[rehypeRaw, rehypeSanitize]}
   >
     {text(
