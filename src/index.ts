@@ -16,7 +16,7 @@ import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 export interface UseRemarkOptions {
   remarkParseOptions?: Partial<RemarkParseOptions>;
   remarkToRehypeOptions?: RemarkRehypeOptions;
-  rehypeReactOptions?: RehypeReactOptions<typeof createElement>;
+  rehypeReactOptions?: Partial<RehypeReactOptions<typeof createElement>>;
   remarkPlugins?: PluggableList;
   rehypePlugins?: PluggableList;
   onError?: (err: Error) => void;
