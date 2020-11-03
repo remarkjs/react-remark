@@ -145,6 +145,7 @@ relevant links: [markdown](https://commonmark.org), [remark](https://github.com/
 import React, { Fragment } from 'react';
 import { useRemark } from '@christianmurphy/react-remark';
 import remarkGemoji from 'remark-gemoji';
+import rehypeSlug from 'rehype-slug';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
 // ...
@@ -153,7 +154,7 @@ const [reactContent, setMarkdownSource] = useRemark({
   remarkParseOptions: { commonmark: true },
   remarkPlugins: [remarkGemoji],
   remarkToRehypeOptions: { commonmark: true },
-  rehypePlugins: [rehypeAutoLinkHeadings],
+  rehypePlugins: [rehypeSlug, rehypeAutoLinkHeadings],
   rehypeReactOptions: {
     components: {
       p: props => <p className="custom-paragraph" {...props} />,
@@ -168,6 +169,7 @@ const [reactContent, setMarkdownSource] = useRemark({
 import React, { Fragment } from 'react';
 import { useRemark } from '@christianmurphy/react-remark';
 import remarkGemoji from 'remark-gemoji';
+import rehypeSlug from 'rehype-slug';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
 // ...
@@ -176,7 +178,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
   remarkParseOptions={{ commonmark: true }}
   remarkPlugins={[remarkGemoji]}
   remarkToRehypeOptions={{ commonmark: true }}
-  rehypePlugins={[rehypeAutoLinkHeadings]}
+  rehypePlugins={[rehypeSlug, rehypeAutoLinkHeadings]}
   rehypeReactOptions={{
     components: {
       p: props => <p className="custom-paragraph" {...props} />,
