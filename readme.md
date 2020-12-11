@@ -9,13 +9,13 @@
 _npm_
 
 ```
-npm install --save @christianmurphy/react-remark
+npm install --save react-remark
 ```
 
 _yarn_
 
 ```
-yarn add @christianmurphy/react-remark
+yarn add react-remark
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ yarn add @christianmurphy/react-remark
 
 ```tsx
 import React from 'react';
-import { useRemark } from '@christianmurphy/react-remark';
+import { useRemark } from 'react-remark';
 
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
@@ -43,7 +43,7 @@ export default ExampleComponent;
 
 ```tsx
 import React from 'react';
-import { useRemark } from '@christianmurphy/react-remark';
+import { useRemark } from 'react-remark';
 
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
@@ -70,7 +70,7 @@ export default ExampleComponent;
 
 ```tsx
 import React, { useState } from 'react';
-import { Remark } from '@christianmurphy/react-remark';
+import { Remark } from 'react-remark';
 
 const ExampleComponent = () => (
   <Remark>{`
@@ -88,7 +88,7 @@ export default ExampleComponent;
 
 ```tsx
 import React, { useState } from 'react';
-import { Remark } from '@christianmurphy/react-remark';
+import { Remark } from 'react-remark';
 
 const ExampleComponent = () => {
   const [markdownSource, setMarkdownSource] = useState('');
@@ -143,7 +143,7 @@ relevant links: [markdown](https://commonmark.org), [remark](https://github.com/
 
 ```tsx
 import React, { Fragment } from 'react';
-import { useRemark } from '@christianmurphy/react-remark';
+import { useRemark } from 'react-remark';
 import remarkGemoji from 'remark-gemoji';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
@@ -167,7 +167,7 @@ const [reactContent, setMarkdownSource] = useRemark({
 
 ```tsx
 import React, { Fragment } from 'react';
-import { useRemark } from '@christianmurphy/react-remark';
+import { useRemark } from 'react-remark';
 import remarkGemoji from 'remark-gemoji';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
