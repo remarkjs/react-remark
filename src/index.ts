@@ -40,8 +40,7 @@ export const useRemark = ({
       .use(rehypePlugins)
       .use(rehypeReact, { createElement, Fragment, ...rehypeReactOptions })
       .process(source)
-      // @ts-ignore pending https://github.com/vfile/vfile/pull/53
-      .then(vfile => setReactContent(vfile.result))
+      .then((vfile) => setReactContent(vfile.result as ReactElement))
       .catch(onError);
   }, []);
 

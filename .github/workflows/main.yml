@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [12, 14]
+        node-version: [12, 14, 15]
 
     name: '${{ matrix.platform }}: node.js ${{ matrix.node-version }}'
 
@@ -40,6 +40,7 @@ jobs:
           CI: true
 
       - name: Lint
+        if: ${{ matrix.platform != 'windows-latest' }}
         run: npm run lint
         env:
           CI: true
