@@ -1,5 +1,4 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -13,55 +12,47 @@ export default {
   component: Remark,
 };
 
-export const PlainMarkdown = () => (
+export const PlainMarkdown = ({content}) => (
   <Remark>
-    {text(
-      'content',
-      `# header
+    {content}
+  </Remark>
+);
+PlainMarkdown.args = {
+  content: `# header
 
 1. ordered
 2. list
 
 * unordered
 * list`
-    )}
+}
+
+export const MarkdownWithMath = ({content}) => (
+  <Remark remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+    {content}
   </Remark>
 );
-
-export const MarkdownWithMath = () => (
-  <Remark remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-    {text(
-      'content',
-      `Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equation.
+MarkdownWithMath.args = {
+  content: `Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equation.
 
 $$
 L = \\frac{1}{2} \\rho v^2 S C_L
 $$`
-    )}
-  </Remark>
-);
+}
 
-export const MixedHTMLSanitized = () => (
+export const MixedHTMLSanitized = ({content}) => (
   <Remark
     remarkToRehypeOptions={{ allowDangerousHtml: true }}
     rehypePlugins={[rehypeRaw, rehypeSanitize]}
   >
-    {text(
-      'content',
-      `# header
+    {content}
+  </Remark>
+);
+MixedHTMLSanitized.args = {
+  content: `# header
 
 <strong>mixed</strong>
 <em>with</em>
 <kbd>html</kbd>
 `
-    )}
-  </Remark>
-);
-
-MixedHTMLSanitized.story = {
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
+}

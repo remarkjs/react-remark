@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { text } from '@storybook/addon-knobs';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -13,72 +12,61 @@ export default {
   component: useRemark,
 };
 
-export const PlainMarkdown = () => {
+export const PlainMarkdown = ({content}) => {
   const [reactContent, setMarkdownSource] = useRemark();
-  const markdownSource = text(
-    'markdown',
-    `# header
+
+  useEffect(() => {
+    setMarkdownSource(content);
+  }, [content]);
+
+  return reactContent || <></>;
+};
+PlainMarkdown.args = {
+  content: `# header
 
 1. ordered
 2. list
 
 * unordered
 * list`
-  );
+}
 
-  useEffect(() => {
-    setMarkdownSource(markdownSource);
-  }, [markdownSource]);
-
-  return reactContent;
-};
-
-export const MarkdownWithMath = () => {
+export const MarkdownWithMath = ({content}) => {
   const [reactContent, setMarkdownSource] = useRemark({
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
   });
-  const markdownSource = text(
-    'markdown',
-    `Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equation.
-
-  $$
-  L = \\frac{1}{2} \\rho v^2 S C_L
-  $$`
-  );
 
   useEffect(() => {
-    setMarkdownSource(markdownSource);
-  }, [markdownSource]);
+    setMarkdownSource(content);
+  }, [content]);
 
-  return reactContent;
+  return reactContent || <></>;
 };
+MarkdownWithMath.args = {
+  content: `Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equation.
 
-export const MixedHTMLSanitized = () => {
+$$
+L = \\frac{1}{2} \\rho v^2 S C_L
+$$`
+}
+
+export const MixedHTMLSanitized = ({content}) => {
   const [reactContent, setMarkdownSource] = useRemark({
     remarkToRehypeOptions: { allowDangerousHtml: true },
     rehypePlugins: [rehypeRaw, rehypeSanitize],
   });
-  const markdownSource = text(
-    'markdown',
-    `# header
+
+  useEffect(() => {
+    setMarkdownSource(content);
+  }, [content]);
+
+  return reactContent || <></>;
+};
+MixedHTMLSanitized.args = {
+  content: `# header
 
 <strong>mixed</strong>
 <em>with</em>
 <kbd>html</kbd>`
-  );
-
-  useEffect(() => {
-    setMarkdownSource(markdownSource);
-  }, [markdownSource]);
-
-  return reactContent;
-};
-
-MixedHTMLSanitized.story = {
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
+}
