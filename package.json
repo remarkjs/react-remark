@@ -4,6 +4,12 @@
   "description": "Renders Markdown as React components",
   "author": "Christian Murphy <christian.murphy.42@gmail.com>",
   "license": "MIT",
+  "repository": "remarkjs/react-remark",
+  "bugs": "https://github.com/remarkjs/react-remark/issues",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
   "main": "dist/index.js",
   "module": "dist/react-markdown.esm.js",
   "typings": "dist/index.d.ts",

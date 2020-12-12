@@ -1,6 +1,6 @@
 # react-remark
 
-[![CI](https://github.com/ChristianMurphy/react-remark/workflows/CI/badge.svg?branch=main)](https://github.com/ChristianMurphy/react-remark/actions?query=workflow%3ACI)
+[![CI](https://github.com/remarkjs/react-remark/workflows/CI/badge.svg?branch=main)](https://github.com/remarkjs/react-remark/actions?query=workflow%3ACI)
 [![Downloads](https://img.shields.io/npm/dm/react-remark.svg)](https://www.npmjs.com/package/react-remark)
 [![Size](https://img.shields.io/bundlephobia/minzip/react-remark.svg)](https://bundlephobia.com/result?p=react-remark)
 
@@ -64,7 +64,7 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
-[More examples of usage as hook in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-hook--default)
+[More examples of usage as hook in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-hook--default)
 
 ### As a component
 
@@ -109,11 +109,11 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
-[More examples of usage as component in storybook.](https://christianmurphy.github.io/react-remark/?path=/story/remark-component--default)
+[More examples of usage as component in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-component--default)
 
 ## Examples
 
-A set of runnable examples are provided through storybook at <https://christianmurphy.github.io/react-remark>.
+A set of runnable examples are provided through storybook at <https://remarkjs.github.io/react-remark>.
 The source for the story files can be found in [_/stories_](./stories).
 
 ## Architecture
