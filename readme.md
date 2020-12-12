@@ -1,6 +1,8 @@
 # react-remark
 
 [![CI](https://github.com/ChristianMurphy/react-remark/workflows/CI/badge.svg?branch=main)](https://github.com/ChristianMurphy/react-remark/actions?query=workflow%3ACI)
+[![Downloads](https://img.shields.io/npm/dm/react-remark.svg)](https://www.npmjs.com/package/react-remark)
+[![Size](https://img.shields.io/bundlephobia/minzip/react-remark.svg)](https://bundlephobia.com/result?p=react-remark)
 
 **react-remark** offers a [React hook](https://reactjs.org/docs/hooks-intro.html) and [React component](https://reactjs.org/docs/glossary.html#components) based way of rendering [markdown](https://commonmark.org/) into [React](https://reactjs.org) using [remark](https://github.com/remarkjs/remark)
 
