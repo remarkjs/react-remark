@@ -1,4 +1,5 @@
 import React from 'react';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -12,22 +13,30 @@ export default {
   component: Remark,
 };
 
-export const PlainMarkdown = ({content}) => (
-  <Remark>
-    {content}
-  </Remark>
-);
-PlainMarkdown.args = {
+export const CommonMark = ({ content }) => <Remark>{content}</Remark>;
+CommonMark.args = {
   content: `# header
 
 1. ordered
 2. list
 
 * unordered
-* list`
-}
+* list`,
+};
 
-export const MarkdownWithMath = ({content}) => (
+export const GithubFlavoredMarkdown = ({ content }) => (
+  <Remark remarkPlugins={[remarkGfm]}>{content}</Remark>
+);
+GithubFlavoredMarkdown.args = {
+  content: `# header
+
+| column 1 | column 2 |
+| -------- | -------- |
+| first    | row      |
+`,
+};
+
+export const MarkdownWithMath = ({ content }) => (
   <Remark remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
     {content}
   </Remark>
@@ -37,10 +46,10 @@ MarkdownWithMath.args = {
 
 $$
 L = \\frac{1}{2} \\rho v^2 S C_L
-$$`
-}
+$$`,
+};
 
-export const MixedHTMLSanitized = ({content}) => (
+export const MixedHTMLSanitized = ({ content }) => (
   <Remark
     remarkToRehypeOptions={{ allowDangerousHtml: true }}
     rehypePlugins={[rehypeRaw, rehypeSanitize]}
@@ -54,5 +63,5 @@ MixedHTMLSanitized.args = {
 <strong>mixed</strong>
 <em>with</em>
 <kbd>html</kbd>
-`
-}
+`,
+};
