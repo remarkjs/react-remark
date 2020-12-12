@@ -64,7 +64,7 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
-[More examples of usage as hook in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-hook--default)
+[More examples of usage as hook in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-hook)
 
 ### As a component
 
@@ -109,7 +109,7 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
-[More examples of usage as component in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-component--default)
+[More examples of usage as component in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-component)
 
 ## Examples
 
