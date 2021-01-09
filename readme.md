@@ -169,7 +169,7 @@ const [reactContent, setMarkdownSource] = useRemark({
 
 ```tsx
 import React, { Fragment } from 'react';
-import { useRemark } from 'react-remark';
+import { Remark } from 'react-remark';
 import remarkGemoji from 'remark-gemoji';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
