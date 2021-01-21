@@ -15,7 +15,7 @@ import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-export interface UseRemarkOptions {
+export interface UseRemarkSyncOptions {
   remarkParseOptions?: Partial<RemarkParseOptions>;
   remarkToRehypeOptions?: RemarkRehypeOptions;
   rehypeReactOptions?: PartialBy<
@@ -24,6 +24,31 @@ export interface UseRemarkOptions {
   >;
   remarkPlugins?: PluggableList;
   rehypePlugins?: PluggableList;
+}
+
+export const useRemarkSync = (
+  source: string,
+  {
+    remarkParseOptions,
+    remarkToRehypeOptions,
+    rehypeReactOptions,
+    remarkPlugins = [],
+    rehypePlugins = [],
+  }: UseRemarkOptions = {}
+): ReactElement =>
+  unified()
+    .use(remarkParse, remarkParseOptions)
+    .use(remarkPlugins)
+    .use(remarkToRehype, remarkToRehypeOptions)
+    .use(rehypePlugins)
+    .use(rehypeReact, {
+      createElement,
+      Fragment,
+      ...rehypeReactOptions,
+    } as RehypeReactOptions<typeof createElement>)
+    .processSync(source).result as ReactElement;
+
+export interface UseRemarkOptions extends UseRemarkSyncOptions {
   onError?: (err: Error) => void;
 }
 
