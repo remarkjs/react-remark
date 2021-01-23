@@ -27,13 +27,15 @@ yarn add react-remark
 #### Render static content
 
 ```tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRemark } from 'react-remark';
 
 const ExampleComponent = () => {
   const [reactContent, setMarkdownSource] = useRemark();
 
-  setMarkdownSource('# markdown header');
+  useEffect(() => {
+    setMarkdownSource('# markdown header');
+  }, [])
 
   return reactContent;
 };
