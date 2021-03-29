@@ -13,10 +13,15 @@ import { Options as RemarkRehypeOptions } from 'mdast-util-to-hast';
 import remarkToRehype from 'remark-rehype';
 import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 
+type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
 export interface UseRemarkOptions {
   remarkParseOptions?: Partial<RemarkParseOptions>;
   remarkToRehypeOptions?: RemarkRehypeOptions;
-  rehypeReactOptions?: Partial<RehypeReactOptions<typeof createElement>>;
+  rehypeReactOptions?: PartialBy<
+    RehypeReactOptions<typeof createElement>,
+    'createElement'
+  >;
   remarkPlugins?: PluggableList;
   rehypePlugins?: PluggableList;
   onError?: (err: Error) => void;
@@ -38,7 +43,11 @@ export const useRemark = ({
       .use(remarkPlugins)
       .use(remarkToRehype, remarkToRehypeOptions)
       .use(rehypePlugins)
-      .use(rehypeReact, { createElement, Fragment, ...rehypeReactOptions })
+      .use(rehypeReact, {
+        createElement,
+        Fragment,
+        ...rehypeReactOptions,
+      } as RehypeReactOptions<typeof createElement>)
       .process(source)
       .then((vfile) => setReactContent(vfile.result as ReactElement))
       .catch(onError);
