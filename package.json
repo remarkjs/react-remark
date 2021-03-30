@@ -27,6 +27,9 @@
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -50,6 +53,7 @@
     "@types/react-dom": "^17.0.0",
     "husky": "^6.0.0",
     "katex": "^0.13.0",
+    "pinst": "^2.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-test-renderer": "^17.0.0",
@@ -60,11 +64,6 @@
     "remark-math": "^4.0.0",
     "tsdx": "^0.14.0",
     "typescript": "^3.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
   },
   "prettier": {
     "printWidth": 80,
