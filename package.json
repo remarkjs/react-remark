@@ -44,8 +44,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@storybook/addon-essentials": "^6.0.0",
-    "@storybook/react": "^6.0.0",
+    "@storybook/addon-essentials": "^6.2.8",
+    "@storybook/react": "^6.2.8",
     "@testing-library/jest-dom": "^5.0.0",
     "@testing-library/react": "^11.0.0",
     "@testing-library/react-hooks": "^5.0.0",
