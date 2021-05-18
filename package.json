@@ -57,7 +57,7 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-test-renderer": "^17.0.0",
-    "rehype-katex": "^4.0.0",
+    "rehype-katex": "^5.0.0",
     "rehype-raw": "^5.0.0",
     "rehype-sanitize": "^4.0.0",
     "remark-gfm": "^1.0.0",
