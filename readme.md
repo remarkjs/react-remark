@@ -155,9 +155,8 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 // ...
 
 const [reactContent, setMarkdownSource] = useRemark({
-  remarkParseOptions: { commonmark: true },
   remarkPlugins: [remarkGemoji],
-  remarkToRehypeOptions: { commonmark: true },
+  remarkToRehypeOptions: { allowDangerous: true },
   rehypePlugins: [rehypeSlug, rehypeAutoLinkHeadings],
   rehypeReactOptions: {
     components: {
@@ -179,9 +178,8 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 // ...
 
 <Remark
-  remarkParseOptions={{ commonmark: true }}
   remarkPlugins={[remarkGemoji]}
-  remarkToRehypeOptions={{ commonmark: true }}
+  remarkToRehypeOptions={{ allowDangerous: true }}
   rehypePlugins={[rehypeSlug, rehypeAutoLinkHeadings]}
   rehypeReactOptions={{
     components: {

@@ -16,7 +16,7 @@ import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 export interface UseRemarkSyncOptions {
-  remarkParseOptions?: Partial<RemarkParseOptions>;
+  remarkParseOptions?: RemarkParseOptions;
   remarkToRehypeOptions?: RemarkRehypeOptions;
   rehypeReactOptions?: PartialBy<
     RehypeReactOptions<typeof createElement>,
