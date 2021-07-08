@@ -173,7 +173,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
 const [reactContent, setMarkdownSource] = useRemark({
   remarkPlugins: [remarkGemoji],
-  remarkToRehypeOptions: { allowDangerous: true },
+  remarkToRehypeOptions: { allowDangerousHtml: true },
   rehypePlugins: [rehypeSlug, rehypeAutoLinkHeadings],
   rehypeReactOptions: {
     components: {
@@ -196,7 +196,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
 <Remark
   remarkPlugins={[remarkGemoji]}
-  remarkToRehypeOptions={{ allowDangerous: true }}
+  remarkToRehypeOptions={{ allowDangerousHtml: true }}
   rehypePlugins={[rehypeSlug, rehypeAutoLinkHeadings]}
   rehypeReactOptions={{
     components: {
