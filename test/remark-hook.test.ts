@@ -7,7 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import { useRemark } from '../src';
+import { useRemark, useRemarkSync } from '../src';
 
 describe('useRemark', () => {
   it('should render content', async () => {
@@ -76,5 +76,56 @@ describe('useRemark', () => {
     });
     await waitForNextUpdate();
     expect(result.current[0]).toMatchSnapshot();
+  });
+});
+
+describe('useRemarkSync', () => {
+  it('should render content', async () => {
+    const { result } = renderHook(() => useRemarkSync('# header'));
+    expect(result.current).toMatchSnapshot();
+  });
+
+  it('should support gfm through remark plugins', async () => {
+    const { result } = renderHook(() =>
+      useRemarkSync('https://example.com', { remarkPlugins: [remarkGfm] })
+    );
+    expect(result.current).toMatchSnapshot();
+  });
+
+  it('should support html through rehype plugins', async () => {
+    const { result } = renderHook(() =>
+      useRemarkSync('<span>example</span>', {
+        remarkToRehypeOptions: { allowDangerousHtml: true },
+        rehypePlugins: [rehypeRaw, rehypeSanitize],
+      })
+    );
+    expect(result.current).toMatchSnapshot();
+  });
+
+  it('should support math through remark and rehype plugins', async () => {
+    const { result } = renderHook(() =>
+      useRemarkSync(
+        'Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equation.',
+        {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        }
+      )
+    );
+    expect(result.current).toMatchSnapshot();
+  });
+
+  it('should support custom element renderer', async () => {
+    const { result } = renderHook(() =>
+      useRemarkSync('# heading', {
+        rehypeReactOptions: {
+          components: {
+            h1: (props: ComponentPropsWithoutNode) =>
+              createElement('h2', props),
+          },
+        },
+      })
+    );
+    expect(result.current).toMatchSnapshot();
   });
 });
