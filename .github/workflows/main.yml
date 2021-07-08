@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [12, 14, 15]
+        node-version: [12, 14, 16]
 
     name: '${{ matrix.platform }}: node.js ${{ matrix.node-version }}'
 
@@ -46,7 +46,7 @@ jobs:
           CI: true
 
       - name: Test
-        run: npm test --ci --coverage --maxWorkers=2
+        run: npm test -- --ci --coverage --maxWorkers=2
         env:
           CI: true
 
