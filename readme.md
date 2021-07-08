@@ -35,7 +35,7 @@ const ExampleComponent = () => {
 
   useEffect(() => {
     setMarkdownSource('# markdown header');
-  }, [])
+  }, []);
 
   return reactContent;
 };
@@ -65,6 +65,23 @@ const ExampleComponent = () => {
 
 export default ExampleComponent;
 ```
+
+### Server side rendering
+
+```tsx
+import React from 'react';
+import { useRemarkSync } from 'react-remark';
+
+const ExampleComponent = () => {
+  const reactContent = useRemarkSync('# markdown header');
+
+  return reactContent;
+};
+
+export default ExampleComponent;
+```
+
+:notebook: Note that some remark plugins are async, these plugins will error if used with `useRemarkSync`.
 
 [More examples of usage as hook in storybook.](https://remarkjs.github.io/react-remark/?path=/story/remark-hook)
 
@@ -160,7 +177,7 @@ const [reactContent, setMarkdownSource] = useRemark({
   rehypePlugins: [rehypeSlug, rehypeAutoLinkHeadings],
   rehypeReactOptions: {
     components: {
-      p: props => <p className="custom-paragraph" {...props} />,
+      p: (props) => <p className="custom-paragraph" {...props} />,
     },
   },
 });
@@ -183,7 +200,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
   rehypePlugins={[rehypeSlug, rehypeAutoLinkHeadings]}
   rehypeReactOptions={{
     components: {
-      p: props => <p className="custom-paragraph" {...props} />,
+      p: (props) => <p className="custom-paragraph" {...props} />,
     },
   }}
 >
