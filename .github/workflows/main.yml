@@ -46,7 +46,7 @@ jobs:
           CI: true
 
       - name: Test
-        run: npm test --ci --coverage --maxWorkers=2
+        run: npm test -- --ci --coverage --maxWorkers=2
         env:
           CI: true
 
