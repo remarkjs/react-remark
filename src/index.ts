@@ -7,10 +7,9 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import unified, { PluggableList } from 'unified';
-import remarkParse, { RemarkParseOptions } from 'remark-parse';
-import { Options as RemarkRehypeOptions } from 'mdast-util-to-hast';
-import remarkToRehype from 'remark-rehype';
+import { unified, PluggableList } from 'unified';
+import remarkParse, { Options as RemarkParseOptions } from 'remark-parse';
+import remarkToRehype, { Options as RemarkRehypeOptions } from 'remark-rehype';
 import rehypeReact, { Options as RehypeReactOptions } from 'rehype-react';
 
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
@@ -18,10 +17,7 @@ type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export interface UseRemarkSyncOptions {
   remarkParseOptions?: RemarkParseOptions;
   remarkToRehypeOptions?: RemarkRehypeOptions;
-  rehypeReactOptions?: PartialBy<
-    RehypeReactOptions<typeof createElement>,
-    'createElement'
-  >;
+  rehypeReactOptions?: PartialBy<RehypeReactOptions, 'createElement'>;
   remarkPlugins?: PluggableList;
   rehypePlugins?: PluggableList;
 }
@@ -39,13 +35,13 @@ export const useRemarkSync = (
   unified()
     .use(remarkParse, remarkParseOptions)
     .use(remarkPlugins)
-    .use(remarkToRehype, remarkToRehypeOptions)
+    .use(remarkToRehype, remarkToRehypeOptions ?? true)
     .use(rehypePlugins)
     .use(rehypeReact, {
       createElement,
       Fragment,
       ...rehypeReactOptions,
-    } as RehypeReactOptions<typeof createElement>)
+    } as RehypeReactOptions)
     .processSync(source).result as ReactElement;
 
 export interface UseRemarkOptions extends UseRemarkSyncOptions {
@@ -58,6 +54,7 @@ export const useRemark = ({
   rehypeReactOptions,
   remarkPlugins = [],
   rehypePlugins = [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onError = () => {},
 }: UseRemarkOptions = {}): [ReactElement | null, (source: string) => void] => {
   const [reactContent, setReactContent] = useState<ReactElement | null>(null);
@@ -66,13 +63,13 @@ export const useRemark = ({
     unified()
       .use(remarkParse, remarkParseOptions)
       .use(remarkPlugins)
-      .use(remarkToRehype, remarkToRehypeOptions)
+      .use(remarkToRehype, remarkToRehypeOptions ?? true)
       .use(rehypePlugins)
       .use(rehypeReact, {
         createElement,
         Fragment,
         ...rehypeReactOptions,
-      } as RehypeReactOptions<typeof createElement>)
+      } as RehypeReactOptions)
       .process(source)
       .then((vfile) => setReactContent(vfile.result as ReactElement))
       .catch(onError);
