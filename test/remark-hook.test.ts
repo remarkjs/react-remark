@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import type { ComponentPropsWithoutNode } from 'rehype-react';
+import type { ComponentsWithoutNodeOptions } from 'rehype-react/lib/index';
 import { renderHook, act } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom/extend-expect';
 import remarkGfm from 'remark-gfm';
@@ -120,8 +120,11 @@ describe('useRemarkSync', () => {
       useRemarkSync('# heading', {
         rehypeReactOptions: {
           components: {
-            h1: (props: ComponentPropsWithoutNode) =>
-              createElement('h2', props),
+            h1: (
+              props: Parameters<
+                ComponentsWithoutNodeOptions['components']['h1']
+              >
+            ) => createElement('h2', props),
           },
         },
       })
