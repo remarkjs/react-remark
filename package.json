@@ -1,5 +1,5 @@
 {
-  "version": "2.0.3",
+  "version": "2.1.0",
   "name": "react-remark",
   "description": "Renders Markdown as React components",
   "author": "Christian Murphy <christian.murphy.42@gmail.com>",
