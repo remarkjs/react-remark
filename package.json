@@ -40,7 +40,7 @@
     "rehype-react": "^6.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
-    "unified": "^9.0.0"
+    "unified": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
