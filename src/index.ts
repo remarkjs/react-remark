@@ -34,7 +34,7 @@ export const useRemarkSync = (
     rehypeReactOptions,
     remarkPlugins = [],
     rehypePlugins = [],
-  }: UseRemarkOptions = {}
+  }: UseRemarkSyncOptions = {}
 ): ReactElement =>
   unified()
     .use(remarkParse, remarkParseOptions)
