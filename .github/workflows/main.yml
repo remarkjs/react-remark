@@ -34,6 +34,11 @@ jobs:
           restore-keys: |
             nodeModules-
 
+      # TODO: Remove when CI supports new peer dep behavior
+      # https://github.com/remarkjs/react-remark/pull/74#issuecomment-1951415731
+      - name: Set legacy-peer-deps=true
+        run: npm config set legacy-peer-deps=true
+
       - name: Install dependencies
         run: npm ci
         env:
