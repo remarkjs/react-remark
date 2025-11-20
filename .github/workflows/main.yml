@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Begin CI...
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Use Node
         uses: actions/setup-node@v3
